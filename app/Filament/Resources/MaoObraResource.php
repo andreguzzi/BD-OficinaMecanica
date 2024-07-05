@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\MaoObraResource\Pages;
 use App\Filament\Resources\MaoObraResource\RelationManagers;
 use App\Models\MaoObra;
+use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -17,14 +18,19 @@ class MaoObraResource extends Resource
 {
     protected static ?string $model = MaoObra::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clock';
+
+    protected static ?string $pluralModelLabel = 'Mão de Obra';
+
+    protected static ?string $navigationGroup = 'Cadastros';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\DatePicker::make('horas')
-                    ->required(),
+                Forms\Components\DateTimePicker::make('horas')
+                    ->required()
+                    ->default(Carbon::now()),
                 Forms\Components\TextInput::make('custo')
                     ->required()
                     ->numeric(),
@@ -36,7 +42,7 @@ class MaoObraResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('horas')
-                    ->date()
+                ->dateTime()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('custo')
                     ->numeric()

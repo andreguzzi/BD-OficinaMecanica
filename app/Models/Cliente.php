@@ -15,12 +15,15 @@ class Cliente extends Model
         'telefone',
         'CPF',
         'CNPJ',
+        'tipo_pessoa',
+        'razao_social',
         'endereco_id'
     ];
 
     protected $searchableFields = ['*'];
 
-    public function endereco() {
+    public function endereco()
+    {
         return $this->belongsTo(Endereco::class);
     }
 }

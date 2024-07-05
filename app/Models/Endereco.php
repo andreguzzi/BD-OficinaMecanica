@@ -10,8 +10,6 @@ class Endereco extends Model
     use HasFactory;
 
     protected $fillable = [
-        'enderecoable_id',
-        'enderecoable_type',
         'logradouro',
         'numero',
         'bairro',
@@ -23,10 +21,6 @@ class Endereco extends Model
 
     protected $searchableFields = ['*'];
 
-    public function enderecoable()
-    {
-        return $this->morphTo();
-    }
 
     public function clientes()
     {

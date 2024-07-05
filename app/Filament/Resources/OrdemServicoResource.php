@@ -17,7 +17,11 @@ class OrdemServicoResource extends Resource
 {
     protected static ?string $model = OrdemServico::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document-check';
+
+    protected static ?string $navigationGroup = 'Cadastros';
+
+    protected static ?string $pluralModelLabel = 'Ordens de Serviços';
 
     public static function form(Form $form): Form
     {

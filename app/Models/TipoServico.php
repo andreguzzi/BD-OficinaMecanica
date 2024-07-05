@@ -21,6 +21,6 @@ class TipoServico extends Model
     }
 
     public function clienteVeiculo() {
-        return $this->belongsTo(ClienteVeiculo::class);
+        return $this->belongsTo('ordem_servicio_servico');
     }
 }
