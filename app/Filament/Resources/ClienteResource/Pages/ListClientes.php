@@ -16,7 +16,7 @@ class ListClientes extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make()->label(' + '),
+          Actions\CreateAction::make()->label(' + '),
         ];
     }
 
@@ -28,5 +28,4 @@ class ListClientes extends ListRecords
             'Pessoa Jurídica' => Tab::make()->query(fn ($query) => $query->where('tipo_pessoa', 'PJ'))->badge(Cliente::query()->where('tipo_pessoa', 'PJ')->count()),
         ];
     }
-    
 }
