@@ -16,7 +16,7 @@ class OrdemServico extends Model
         'dataEntrega',
         'descricao',
         'valor_total',
-        'peca_id'
+        'cliente_id',
     ];
 
     public function tipoServico() {
@@ -24,6 +24,11 @@ class OrdemServico extends Model
     }
 
     public function peca() {
-        return $this->belongsTo(Peca::class);
+        return $this->BelongsToMany(Peca::class);
+    }
+
+    public function cliente()
+    {
+        return $this->belongsTo(Cliente::class);
     }
 }

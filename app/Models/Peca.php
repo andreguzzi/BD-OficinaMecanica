@@ -13,5 +13,9 @@ class Peca extends Model
         'nome',
         'valor'
     ];
+
+    public function ordemServico() {
+        return $this->hasMany(OrdemServico::class);
+    }
     
 }

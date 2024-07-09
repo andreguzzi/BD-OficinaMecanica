@@ -34,12 +34,7 @@ class OrdemServicoResource extends Resource
                     ->required(),
                 Forms\Components\DatePicker::make('dataEntrega')
                     ->required(),
-                Forms\Components\TextInput::make('tipo_servico_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('peca_id')
-                    ->required()
-                    ->numeric(),
+       
             ]);
     }
 
@@ -86,7 +81,7 @@ class OrdemServicoResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            
         ];
     }
 
