@@ -6,6 +6,7 @@ use App\Filament\Resources\OrdemServicoResource\Pages;
 use App\Filament\Resources\OrdemServicoResource\RelationManagers;
 use App\Models\OrdemServico;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -34,7 +35,9 @@ class OrdemServicoResource extends Resource
                     ->required(),
                 Forms\Components\DatePicker::make('dataEntrega')
                     ->required(),
-       
+                Select::make('cliente_id')
+                    ->relationship('cliente', titleAttribute: 'nome')
+
             ]);
     }
 
@@ -54,6 +57,9 @@ class OrdemServicoResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('peca_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('cliente_id')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
@@ -80,9 +86,7 @@ class OrdemServicoResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            
-        ];
+        return [];
     }
 
     public static function getPages(): array
