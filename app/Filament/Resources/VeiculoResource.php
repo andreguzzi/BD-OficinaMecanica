@@ -6,6 +6,7 @@ use App\Filament\Resources\VeiculoResource\Pages;
 use App\Filament\Resources\VeiculoResource\RelationManagers;
 use App\Models\Veiculo;
 use Filament\Forms;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -24,11 +25,22 @@ class VeiculoResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\TextInput::make('placa')
-                    ->required()
-                    ->maxLength(255),
-            ]);
+            ->schema(
+                self::getDadosForm(),
+            );
+    }
+
+    public static function getDadosForm(): array
+    {
+
+        return [
+            Fieldset::make('Dados do Veiculo')
+                ->schema([
+                    Forms\Components\TextInput::make('placa')
+                        ->required()
+                        ->maxLength(255),
+                ])
+        ];
     }
 
     public static function table(Table $table): Table

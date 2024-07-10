@@ -17,6 +17,8 @@ class OrdemServico extends Model
         'descricao',
         'valor_total',
         'cliente_id',
+        'veiculo_id',
+        'mecanico_id'
     ];
 
     public function tipoServico() {
@@ -27,8 +29,16 @@ class OrdemServico extends Model
         return $this->BelongsToMany(Peca::class);
     }
 
+    public function veiculo() {
+        return $this->belongsTo(Veiculo::class);
+    }
+
     public function cliente()
     {
         return $this->belongsTo(Cliente::class);
+    }
+    public function mecanico()
+    {
+        return $this->belongsTo(Mecanico::class);
     }
 }

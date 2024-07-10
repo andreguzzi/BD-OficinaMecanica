@@ -37,7 +37,16 @@ class OrdemServicoResource extends Resource
                     ->required(),
                 Select::make('cliente_id')
                     ->relationship('cliente', titleAttribute: 'nome')
-
+                    ->createOptionForm(ClienteResource::getDadosForm())
+                    ->editOptionForm(ClienteResource::getDadosForm()),
+                Select::make('veiculo_id')
+                    ->relationship('veiculo', titleAttribute: 'placa')
+                    ->createOptionForm(VeiculoResource::getDadosForm())
+                    ->editOptionForm(VeiculoResource::getDadosForm()),
+                Select::make('mecanico_id')
+                    ->relationship('mecanico', titleAttribute: 'nome')
+                    ->createOptionForm(MecanicoResource::getDadosForm())
+                    ->editOptionForm(MecanicoResource::getDadosForm()),
             ]);
     }
 
@@ -53,13 +62,13 @@ class OrdemServicoResource extends Resource
                 Tables\Columns\TextColumn::make('dataEntrega')
                     ->date()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('tipo_servico_id')
+                Tables\Columns\TextColumn::make('cliente.nome')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('peca_id')
+                Tables\Columns\TextColumn::make('mecanico.nome')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('cliente_id')
+                Tables\Columns\TextColumn::make('veiculo.placa')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
