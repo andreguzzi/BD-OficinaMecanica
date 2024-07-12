@@ -33,7 +33,8 @@ class MaoObraResource extends Resource
                     ->default(Carbon::now()),
                 Forms\Components\TextInput::make('custo')
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->inputMode('decimal'),
             ]);
     }
 

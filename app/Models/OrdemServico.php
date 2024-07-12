@@ -10,7 +10,6 @@ class OrdemServico extends Model
     use HasFactory;
 
     protected $fillable = [
-        'tipo_servico_id',
         'status',
         'dataEmissao',
         'dataEntrega',
@@ -21,7 +20,7 @@ class OrdemServico extends Model
         'mecanico_id'
     ];
 
-    public function tipoServico() {
+    public function servico() {
         return $this->belongsTo(TipoServico::class);
     }
 

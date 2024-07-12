@@ -30,7 +30,13 @@ class ServicoResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('status')
                     ->required()
-                    ->maxLength(255),
+                    ->datalist([
+                        'Não Agendado',
+                        'Agendada',
+                        'Em Andamento',
+                        'Concluido',
+                        'Cancelado',
+                    ])
             ]);
     }
 

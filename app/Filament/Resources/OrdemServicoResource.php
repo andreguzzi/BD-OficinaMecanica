@@ -13,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\HtmlString;
 
 class OrdemServicoResource extends Resource
 {
@@ -35,6 +36,7 @@ class OrdemServicoResource extends Resource
                     ->required(),
                 Forms\Components\DatePicker::make('dataEntrega')
                     ->required(),
+                    
                 Select::make('cliente_id')
                     ->relationship('cliente', titleAttribute: 'nome')
                     ->createOptionForm(ClienteResource::getDadosForm())
@@ -95,7 +97,9 @@ class OrdemServicoResource extends Resource
 
     public static function getRelations(): array
     {
-        return [];
+        return [
+            RelationManagers\ServicoRelationManager::class,
+        ];
     }
 
     public static function getPages(): array
